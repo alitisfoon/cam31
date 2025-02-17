@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدیریت دانش‌آموزان</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- صفحه شناسایی -->
+    <section id="recognition" class="section active">
+        <h1>شناسایی افراد</h1>
+        <div id="camera">
+            <video id="recognitionVideo" autoplay playsinline></video>
+        </div>
+        <div id="info">
+            <h2>اطلاعات فرد:</h2>
+            <p id="name">نام: ناشناس</p>
+            <p id="status">وضعیت: -</p>
+        </div>
+        <button onclick="showSection('add-student')">اضافه کردن دانش‌آموز</button>
+    </section>
+
+    <!-- صفحه اضافه کردن دانش‌آموز -->
+    <section id="add-student" class="section">
+        <h1>اضافه کردن دانش‌آموز</h1>
+        <table class="student-form">
+            <tr>
+                <td>نام:</td>
+                <td><input type="text" id="studentName"></td>
+            </tr>
+            <tr>
+                <td>نام پدر:</td>
+                <td><input type="text" id="studentFather"></td>
+            </tr>
+            <tr>
+                <td>سال تولد:</td>
+                <td><input type="number" id="studentBirthYear"></td>
+            </tr>
+            <tr>
+                <td>معدل:</td>
+                <td><input type="number" step="0.01" id="studentGrade"></td>
+            </tr>
+            <tr>
+                <td>تعداد غیبت‌ها:</td>
+                <td><input type="number" id="studentAbsences"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button onclick="saveStudent()">ذخیره</button>
+                    <button onclick="takePhoto()">عکس گرفتن</button>
+                </td>
+            </tr>
+        </table>
+        <div id="camera">
+            <video id="addStudentVideo" autoplay playsinline></video>
+            <canvas id="canvas" style="display:none;"></canvas>
+            <img id="photo" src="" alt="عکس گرفته شده">
+        </div>
+        <button onclick="showSection('recognition')">صفحه قبل</button>
+        <button onclick="showSection('archive')">صفحه بعد</button>
+    </section>
+
+    <!-- صفحه بایگانی -->
+    <section id="archive" class="section">
+        <h1>بایگانی اطلاعات دانش‌آموزان</h1>
+        <table id="archiveTable">
+            <thead>
+                <tr>
+                    <th>نام</th>
+                    <th>نام پدر</th>
+                    <th>سال تولد</th>
+                    <th>معدل</th>
+                    <th>تعداد غیبت‌ها</th>
+                    <th>عکس</th>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- اطلاعات اینجا اضافه خواهد شد -->
+            </tbody>
+        </table>
+        <button onclick="showSection('add-student')">صفحه قبل</button>
+        <button onclick="showSection('recognition')">صفحه اول</button>
+    </section>
+
+    <!-- اسکریپت‌های FaceAPI -->
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js"></script>
+    <script src="app.js" defer></script>
+</body>
+</html>
